@@ -57,7 +57,7 @@ function formhide(){
     if(add_new_student($_POST)){
     echo "You have successful submit students information. <br>";
     echo "Get back to submit more information.<a href='#'>Back</a>";
-    wp_redirect('index.php',302);
+    wp_redirect('student_list.php',302);
     }else{
     echo "The students has been existed! Please do not re-add it! Thanks ";
     }

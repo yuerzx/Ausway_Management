@@ -34,8 +34,8 @@ function system_nav($name=null){
     ?>
     <div id="nav" class="col-md-7 col-md-offset-2">
         <ul class="nav nav-pills">
-            <li><a href="index.php">Home</a></li>
-            <li class ="<?php if($name == 'student') echo 'active'; ?>" ><a href="index.php">Student List</a></li>
+            <li class ="<?php if($name == 'home') echo 'active'; ?>"><a href="index.php">Home</a></li>
+            <li class ="<?php if($name == 'student') echo 'active'; ?>" ><a href="student_list.php">Student List</a></li>
             <li class ="<?php if($name == 'agency') echo 'active'; ?>" ><a href="agency_list.php">Agency List</a></li>
             <li class ="<?php if($name == 'sponsor') echo 'active'; ?>" ><a href="sponsor_list.php">Sponsor List</a></li>
         </ul>
@@ -57,4 +57,31 @@ function agency_name($id){
         echo "error!!";
     }
 }
+
+function get_name($id,$category){
+    /* TODO finish up this part */
+    if(is_numeric($id)){
+        global $wpdb;
+        switch ($category){
+            case agency:
+                $table = $wpdb->prefix.'eazplus_agency';
+
+                break;
+            case student:
+                $table = $wpdb->prefix.'eazplus_students';
+                break;
+            case sponsor:
+                $table = $wpdb->prefix.'eazplus_spsonor';
+        }
+        $name = $wpdb -> get_var(
+            "
+            SELECT agency_name FROM $table WHERE agency_id = $id
+            "
+        );
+        return $name;
+    }else{
+        echo "error!!";
+    }
+}
+
 ?>
