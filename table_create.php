@@ -5,7 +5,7 @@ include "config.php";
 function add_contact_sql(){
   /*创建表，name为唯一的数值，不可重复*/
   global $wpdb;
-  $table_students = $wpdb->prefix.'eazplus_students';
+  $table_students = $wpdb->prefix.'eazplus_student';
   $table_attachments = $wpdb->prefix.'eazplus_attachments';
   $table_sponsor = $wpdb->prefix.'eazplus_sponsor';
   $table_agency = $wpdb->prefix.'eazplus_agency';

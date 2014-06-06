@@ -44,7 +44,7 @@ if(formsubmit()){
 
 if(isset($_GET) && !empty($_GET['student_id'])):
     global $wpdb;
-    $table_students = $wpdb->prefix.'eazplus_students';
+    $table_students = $wpdb->prefix.'eazplus_student';
     $student_id = $_GET['student_id'];
     $student = $wpdb->get_row(
         "
