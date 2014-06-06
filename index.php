@@ -14,6 +14,6 @@ get_header();
 <div class="<?php echo SYSTEM_FRAME_WORK; ?>">
     <div><p>Welcome to Ausway Management System</p></div>
 </div>
-
+<?php get_footer();?>
 
 

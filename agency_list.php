@@ -18,7 +18,7 @@ $agencys = $wpdb->get_results(
 </div>
 <div clas="row">
 
-    <div class="<?php echo SYSTEM_FRAME_WORK; ?>">
+    <div class="<?php echo SYSTEM_FRAME_WORK; ?>" style="margin-bottom: 20px;">
         <table class="table table-striped">
             <tr class="success">
                 <td>中介姓名</td>
@@ -41,3 +41,5 @@ $agencys = $wpdb->get_results(
         </table>
         <a href="agency_form.php"><button type="button" class="btn btn-primary">Add Agency</button></a>
     </div></div>
+
+<?php get_footer();?>

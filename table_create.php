@@ -7,7 +7,7 @@ function add_contact_sql(){
   global $wpdb;
   $table_students = $wpdb->prefix.'eazplus_students';
   $table_attachments = $wpdb->prefix.'eazplus_attachments';
-  $table_sporonship = $wpdb->prefix.'eazplus_sporonship';
+  $table_sponsor = $wpdb->prefix.'eazplus_sponsor';
   $table_agency = $wpdb->prefix.'eazplus_agency';
   $table_process = $wpdb->prefix.'eazplus_process';
   if($wpdb->get_var("SHOW TABLES LIKE '".$table_students."'")!=$table_students){
@@ -63,7 +63,7 @@ function add_contact_sql(){
       )CHARSET=utf8;
     ";
     $sql_sponsor = "
-      CREATE TABLE $table_sporonship(
+      CREATE TABLE $table_sponsor(
         sponsor_id int(10) NOT NULL AUTO_INCREMENT,
         sponsor_name varchar(255) NOT NULL UNIQUE,
         student_id int(10),

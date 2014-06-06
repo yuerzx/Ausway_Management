@@ -64,7 +64,7 @@ function formhide(){
   </div>
   <div class="form-group">
     <label for="agency_nickname" class="control-label">Nick Name</label>
-    <input type="text" class="form-control" id="agency_nickname" name="agency_nickname" placeholder="Enter NickName" required>
+    <input type="text" class="form-control" id="agency_nickname" name="agency_nickname" placeholder="Enter NickName">
   </div>
   <div class="form-group">
     <label for="email">Email address</label>
