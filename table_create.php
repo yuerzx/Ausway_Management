@@ -5,14 +5,14 @@ include "config.php";
 function add_contact_sql(){
   /*创建表，name为唯一的数值，不可重复*/
   global $wpdb;
-  $table_students = $wpdb->prefix.'eazplus_student';
+  global $table_student;
   $table_attachments = $wpdb->prefix.'eazplus_attachments';
   $table_sponsor = $wpdb->prefix.'eazplus_sponsor';
   $table_agency = $wpdb->prefix.'eazplus_agency';
   $table_process = $wpdb->prefix.'eazplus_process';
-  if($wpdb->get_var("SHOW TABLES LIKE '".$table_students."'")!=$table_students){
+  if($wpdb->get_var("SHOW TABLES LIKE '".$table_student."'")!=$table_student){
     $sql_students = "
-      CREATE TABLE $table_students(
+      CREATE TABLE $table_student(
         student_id int(10) NOT NULL AUTO_INCREMENT,
         sponsor_id int(10),
         agency_id int(10),
@@ -66,10 +66,9 @@ function add_contact_sql(){
       CREATE TABLE $table_sponsor(
         sponsor_id int(10) NOT NULL AUTO_INCREMENT,
         sponsor_name varchar(255) NOT NULL UNIQUE,
-        student_id int(10),
-        agency_id int(10),
-        PRIMARY KEY(sponsor_id),
-        INDEX (agency_id,student_id)
+        middle_name varchar(254),
+        sponsor_notes text,
+        PRIMARY KEY(sponsor_id)
       )CHARSET=utf8;
     ";
     $sql_agency = "

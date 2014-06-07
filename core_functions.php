@@ -130,7 +130,7 @@ function add_new_student($information){
         $date = date_format($date, 'Y-m-d');
     }
     global $wpdb;
-    $table_students = $wpdb->prefix.'eazplus_students';
+    global $table_student;
     $student_insert_pre = array(
         'student_name'          => $information["student_name"],
         'student_email'         => $information["student_email"],
@@ -155,7 +155,7 @@ function add_new_student($information){
     );
     $wpdb->show_errors();
     //If error what we return
-    if(!$wpdb->insert( $table_students,$student_insert_pre,$student_insert_format)) {return false;}else{return true;}
+    if(!$wpdb->insert( $table_student,$student_insert_pre,$student_insert_format)) {return false;}else{return true;}
 
 }
 
@@ -170,7 +170,7 @@ function update_student($information){
         $date = date_format($date, 'Y-m-d');
     }
     global $wpdb;
-    $table_students = $wpdb->prefix.'eazplus_students';
+    global $table_student;
     $student_id = $information["student_id"];
     
     $student_insert_pre = array(
@@ -198,7 +198,7 @@ function update_student($information){
     $wpdb->show_errors();
     //If error what we return
     if(!$wpdb->update( 
-        $table_students,
+        $table_student,
         $student_insert_pre,
         array('student_id' => $student_id),
         $student_insert_format, 

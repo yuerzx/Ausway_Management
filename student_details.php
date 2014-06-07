@@ -44,11 +44,11 @@ if(formsubmit()){
 
 if(isset($_GET) && !empty($_GET['student_id'])):
     global $wpdb;
-    $table_students = $wpdb->prefix.'eazplus_student';
+    global $table_student;
     $student_id = $_GET['student_id'];
     $student = $wpdb->get_row(
         "
-        SELECT * FROM $table_students WHERE student_id = $student_id
+        SELECT * FROM $table_student WHERE student_id = $student_id
         ", ARRAY_A
     );
 else:
@@ -80,7 +80,7 @@ endif;
   </div>
   <div class="radio-inline">
   <label>
-    <input type="radio" name="student_visa" id="visa" value="187" <?php if($student['student_visa']=='187') echo "checked"; ?>>
+    <input type="radio" name="student_visa" id="visa" value="187" required <?php if($student['student_visa']=='187') echo "checked"; ?>>
     187 Visa
   </label>
 </div>

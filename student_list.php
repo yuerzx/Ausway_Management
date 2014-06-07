@@ -7,11 +7,11 @@ include "config.php";
 get_header();
 
 Global $wpdb;
-$table_students = $wpdb->prefix.'eazplus_students';
+global $table_student;
 $students = $wpdb->get_results(
     "
 	SELECT *
-	FROM $table_students
+	FROM $table_student
 	WHERE student_process != 18
 	", ARRAY_A
 );
@@ -42,7 +42,7 @@ $students = $wpdb->get_results(
                 <td>0<?php echo $student['student_phone'] ?></td>
                 <td><?php echo $student['student_email'] ?></td>
                 <td><?php echo $student['student_visa'] ?></td>
-                <td><a href="agency_details.php?student_id=<?php echo $student['agency_id'] ?>"><?php echo agency_name($student['agency_id']) ?></a></td>
+                <td><a href="agency_details.php?agency_id=<?php echo $student['agency_id'] ?>"><?php echo agency_name($student['agency_id']) ?></a></td>
                 <td><?php $sponsor_name = get_name($student['sponsor_id'], 'sponsor'); if(!$sponsor_name) echo '<span style="color:red;">尚未分配<span>';else echo $sponsor_name; ?></td>
                 <td><?php process_bar($student['student_process']) ?></td>
                 <td><?php echo $student['process_date'] ?></td>

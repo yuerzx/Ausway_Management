@@ -55,11 +55,11 @@ if(formsubmit()){
 
 if(isset($_GET) && !empty($_GET['agency_id'])):
     global $wpdb;
-    global $table_agencys;
+    global $table_agency;
     $agency_id = $_GET['agency_id'];
     $agency = $wpdb->get_row(
         "
-        SELECT * FROM $table_agencys WHERE agency_id = $agency_id
+        SELECT * FROM $table_agency WHERE agency_id = $agency_id
         ", ARRAY_A
     );
 else:
@@ -97,12 +97,11 @@ endif;
 
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
+    </div></div>
+    <div class="col-md-6 col-md-offset-2" style="padding-top: 15px;">
         <div><h4>Cases</h4>
-            <br>
         <table class="table table-hover">
-        <tr><td>Student Name</td><td>Sponsor Name</td><tr>
+        <thead><tr><td>Student Name</td><td>Sponsor Name</td></tr></thead>
         <?php $student_lists = get_student_list($_GET['agency_id']);
         foreach ($student_lists as $student_list){ ?>
          <tr><td><a href="student_details.php?student_id=<?= $student_list['student_id'] ?>">
@@ -116,6 +115,4 @@ endif;
     </div>
 </div>
 
-</div>
 
-    </div>

@@ -38,7 +38,7 @@ $sponsors = $wpdb->get_results(
             </tr>
     <?php endforeach; endif; ?>
 </table>
-    <a href="#"><button type="button" class="btn btn-primary">Add Spsonsor</button></a>
+    <a href="sponsor_details.php"><button type="button" class="btn btn-primary">Add Spsonsor</button></a>
 </div></div>
 <?php get_footer();?>
 
