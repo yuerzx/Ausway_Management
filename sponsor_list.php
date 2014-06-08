@@ -1,45 +1,32 @@
 <?php
-/*
- * Template Name: Student List Page
- * This is the enter page for student management system.
+/**
+ * Created by PhpStorm.
+ * User: yuerzx
+ * Date: 8/06/14
+ * Time: 8:42 PM
  */
-include "config.php";
-get_header();
 
-Global $wpdb;
-$table_sporonship = $wpdb->prefix.'eazplus_sponsor';
-$sponsors = $wpdb->get_results(
-    "
-	SELECT *
-	FROM $table_sporonship
-	", ARRAY_A
-);
+include_once('config.php');
+get_header();
+system_nav('sponsor');
+
+$xcrud -> table($table_sponsor);
+$xcrud -> table_name('雇主列表');
+$xcrud -> columns('sponsor_name, middle_man, sponsor_notes, Cases');
+$xcrud-> subselect('Cases',"SELECT COUNT(student_id) FROM {$table_student} WHERE sponsor_id = {sponsor_id}");
+$xcrud->column_callback('Cases', 'sponsor_links');
+
+function sponsor_links($value, $fieldname, $primary_key, $row, $xcrud){
+
+    return '<a href="cases_list.php?sponsor_id='.$primary_key.'">'.$value.'</a>';
+}
 
 ?>
 
+<body>
 <div class="row">
-    <?php system_nav('sponsor'); ?>
+    <div class="col-md-offset-2 col-md-8">
+        <?= $xcrud->render();?>
+    </div>
 </div>
-<div clas="row">
-
-<div class="<?php echo SYSTEM_FRAME_WORK; ?>" style="margin-bottom: 20px;">
-    <table class="table table-striped">
-            <tr class="success">
-                <td>雇主姓名</td>
-                <td>Agency</td>
-                <td>Student</td>
-            </tr>
-<?php if(isset($sponsors) && !empty($sponsors)):
-    foreach($sponsors as $sponsor):?>
-            <tr>
-                <td><a href="sponsor_details.php?sponsor_id=<?php echo $sponsor['sponsor_id'] ?>"><?php echo $sponsor['sponsor_name'] ?></a></td>
-                <td><?php echo get_name($sponsor['agency_id'], 'agency') ?></td>
-                <td><?php echo get_name($sponsor['student_id'], 'student') ?></td>
-            </tr>
-    <?php endforeach; endif; ?>
-</table>
-    <a href="sponsor_details.php"><button type="button" class="btn btn-primary">Add Spsonsor</button></a>
-</div></div>
-<?php get_footer();?>
-
-
+</body>

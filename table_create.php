@@ -75,14 +75,11 @@ function add_contact_sql(){
       CREATE TABLE $table_agency(
         agency_id int(10) NOT NULL AUTO_INCREMENT,
         agency_name varchar(255) NOT NULL UNIQUE,
-        agency_nickname varchar(30),
+        agency_company varchar(30),
         agency_phone varchar(30),
         agency_email varchar(255),
         agency_notes text,
-        student_id int(10),
-        sponsor_id int(10),
         PRIMARY KEY(agency_id),
-        INDEX (sponsor_id,student_id)
       )CHARSET=utf8;
     ";
 

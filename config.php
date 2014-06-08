@@ -1,7 +1,8 @@
 <?php
 $wordpress_config = dirname(dirname(__FILE__))."/wp-config.php";
 require_once($wordpress_config);
-require_once 'core_functions.php';
+require_once('core_functions.php');
+include('xcrud/xcrud.php');
 
 add_action('wp_enqueue_scripts', 'remove_unused_css'); 
 function remove_unused_css(){
@@ -19,6 +20,10 @@ $table_process = $wpdb->prefix.'eazplus_process';
 global $table_student;
 global $table_agency;
 global $table_sponsor;
+global $table_process;
+
+$xcrud = Xcrud::get_instance();
+$xcrud->unset_csv();
 ?>
 
 
