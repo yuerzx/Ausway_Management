@@ -21,10 +21,7 @@ $xcrud -> label(array(
     'sponsor_notes' =>  'Notes'
 ));
 
-function sponsor_links($value, $fieldname, $primary_key, $row, $xcrud){
 
-    return '<a href="cases_list.php?sponsor_id='.$primary_key.'">'.$value.'</a>';
-}
 
 ?>
 

@@ -24,10 +24,7 @@ $xcrud -> label(array(
     'agency_address'=>  'Address'
 ));
 
-function agency_links($value, $fieldname, $primary_key, $row, $xcrud){
 
-    return '<a href="cases_list.php?agency_id='.$primary_key.'">'.$value.'</a>';
-}
 
 ?>
 

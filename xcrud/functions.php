@@ -1,4 +1,26 @@
 <?php
+
+function process_bar($process){
+    $value = $process*(100/18);
+    $value = round($value);
+    return '
+    <div class="progress progress-striped active">
+    <div class="progress-bar" role="progressbar" aria-valuenow="'.$value.'" aria-valuemin="0" aria-valuemax="100" style="width:'.$value.'%;">
+    '.$value.'%
+    </div>
+    </div>';
+}
+
+function sponsor_links($value, $fieldname, $primary_key, $row, $xcrud){
+
+    return '<a href="cases_list.php?sponsor_id='.$primary_key.'">'.$value.'</a>';
+}
+
+function agency_links($value, $fieldname, $primary_key, $row, $xcrud){
+
+    return '<a href="cases_list.php?agency_id='.$primary_key.'">'.$value.'</a>';
+}
+
 function publish_action($xcrud)
 {
     if ($xcrud->get('primary'))
