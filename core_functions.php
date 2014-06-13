@@ -1,7 +1,7 @@
 <?php
 
 define(SYSTEM_FRAME_WORK,'col-md-7 col-md-offset-2');
-//security_check();
+security_check();
 
 
 
@@ -14,29 +14,25 @@ function security_check(){
 			case 'patrick':
 			case 'howard':
 			case 'yuer':
+            case 'ausway':
 			break;
 			default:
-				wp_die('Sorry, you must first <a href="'.get_site_url().'/wp-login.php">log in</a> to view this page. 
+				wp_die('Sorry, you must first <a href="'.get_site_url().'/wp-login.php">log in</a> to view this page.
 				You need to have a access to this page.');
 			break;
 		}
 	}else{
+        echo "<div>";
+        wp_login_form();
+
 		wp_die('Sorry, you must first <a href="'.get_site_url().'/wp-login.php">log in</a> to view this page. 
 			You need to have a access to this page.');
+        echo "</div>";
 }
 }
 
 
-function process_bar($process){
-    $value = $process*(100/18);
-    $value = round($value);
-    return '
-    <div class="progress progress-striped active">
-    <div class="progress-bar" role="progressbar" aria-valuenow="'.$value.'" aria-valuemin="0" aria-valuemax="100" style="width:'.$value.'%;">
-    '.$value.'%
-    </div>
-    </div>';
-}
+
 
 
 function system_nav($name=null){

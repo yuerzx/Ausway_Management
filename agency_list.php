@@ -12,9 +12,17 @@ system_nav('agency');
 
 $xcrud -> table($table_agency);
 $xcrud -> table_name('中介列表');
-$xcrud -> columns('agency_name, agency_company, agency_phone, agency_email, agency_notes, Cases');
-$xcrud-> subselect('Cases',"SELECT COUNT(student_id) FROM {$table_student} WHERE agency_id = {agency_id}");
-$xcrud->column_callback('Cases', 'agency_links');
+$xcrud -> columns('agency_name, agency_company, agency_phone, agency_email, Cases');
+$xcrud -> subselect('Cases',"SELECT COUNT(student_id) FROM {$table_student} WHERE agency_id = {agency_id}");
+$xcrud -> column_callback('Cases', 'agency_links');
+$xcrud -> label(array(
+    'agency_name'   => 'Name',
+    'agency_company'=>  'Company Name',
+    'agency_phone'  =>  'Phone',
+    'agency_email'  =>  'Email',
+    'agency_notes'  =>  'Notes',
+    'agency_address'=>  'Address'
+));
 
 function agency_links($value, $fieldname, $primary_key, $row, $xcrud){
 

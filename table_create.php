@@ -1,25 +1,27 @@
 <?php
 
-include "config.php";
+include_once('config.php');
 
 function add_contact_sql(){
   /*创建表，name为唯一的数值，不可重复*/
-  global $wpdb;
-  global $table_student;
-  $table_attachments = $wpdb->prefix.'eazplus_attachments';
-  $table_sponsor = $wpdb->prefix.'eazplus_sponsor';
-  $table_agency = $wpdb->prefix.'eazplus_agency';
-  $table_process = $wpdb->prefix.'eazplus_process';
+    global $wpdb;
+    global $table_student;
+    global $table_agency;
+    global $table_sponsor;
+    global $table_process;
+
   if($wpdb->get_var("SHOW TABLES LIKE '".$table_student."'")!=$table_student){
     $sql_students = "
       CREATE TABLE $table_student(
         student_id int(10) NOT NULL AUTO_INCREMENT,
         sponsor_id int(10),
         agency_id int(10),
-        student_name varchar(255) NOT NULL UNIQUE,
+        student_name varchar(35) NOT NULL UNIQUE,
+        student_eng  varchar(254),
         student_phone varchar(30),
-        student_email varchar(255),
-        student_visa varchar(255),
+        student_email varchar(254),
+        student_address varchar (254),
+        student_visa varchar(8),
         process_date DATE,
         student_process int(2),
         student_notes text,
@@ -48,25 +50,12 @@ function add_contact_sql(){
     17. Visa Application Failed
     18. Deal Closed
     */
-    $sql_attachments = "
-      CREATE TABLE $table_attachments(
-        attachment_id int(10) NOT NULL AUTO_INCREMENT,
-        sponsor_id int(10),
-        student_id int(10),
-        attachment_url varchar(255),
-        attachment_checked int(1),
-        attachment_name int(255),
-        attachment_date date,
-        attachment_notes text,
-        PRIMARY KEY(attachment_id),
-        INDEX (sponsor_id,student_id)
-      )CHARSET=utf8;
-    ";
+
     $sql_sponsor = "
       CREATE TABLE $table_sponsor(
         sponsor_id int(10) NOT NULL AUTO_INCREMENT,
         sponsor_name varchar(255) NOT NULL UNIQUE,
-        middle_name varchar(254),
+        middle_man varchar(254),
         sponsor_notes text,
         PRIMARY KEY(sponsor_id)
       )CHARSET=utf8;
@@ -76,10 +65,11 @@ function add_contact_sql(){
         agency_id int(10) NOT NULL AUTO_INCREMENT,
         agency_name varchar(255) NOT NULL UNIQUE,
         agency_company varchar(30),
+        agency_address varchar(254),
         agency_phone varchar(30),
-        agency_email varchar(255),
+        agency_email varchar(254),
         agency_notes text,
-        PRIMARY KEY(agency_id),
+        PRIMARY KEY(agency_id)
       )CHARSET=utf8;
     ";
 
@@ -94,7 +84,6 @@ function add_contact_sql(){
     ";
   $wpdb->show_errors();
   $wpdb-> query($sql_students);
-  $wpdb-> query($sql_attachments);
   $wpdb-> query($sql_sponsor);
   $wpdb-> query($sql_agency);
   $wpdb-> query($sql_process);

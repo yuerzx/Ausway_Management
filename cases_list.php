@@ -10,9 +10,9 @@ include('config.php');
 
 if (isset($_GET) and !empty($_GET)){
     if (!empty($_GET['agency_id'])){
-        $agency_id = mysql_real_escape_string($_GET['agency_id']);
+        $agency_id = intval($_GET['agency_id']);
     }elseif(!empty($_GET['sponsor_id'])){
-        $sponsor_id = mysql_real_escape_string($_GET['sponsor_id']);
+        $sponsor_id = intval($_GET['sponsor_id']);
     }else{
         echo "There is a error and please check it!";
         wp_redirect('/index.php', 302);
@@ -29,7 +29,7 @@ if(!empty($agency_id) and isset($agency_id)){
 }
 $xcrud->relation('sponsor_id', $table_sponsor, 'sponsor_id', 'sponsor_name');
 $xcrud->relation('agency_id', $table_agency, 'agency_id', 'agency_name');
-
+$xcrud->columns('student_name, student_eng, sponsor_id, agency_id, student_phone, student_email, student_visa');
 ?>
 <body>
 <div class="row">

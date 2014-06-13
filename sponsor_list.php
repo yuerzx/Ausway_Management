@@ -12,9 +12,14 @@ system_nav('sponsor');
 
 $xcrud -> table($table_sponsor);
 $xcrud -> table_name('雇主列表');
-$xcrud -> columns('sponsor_name, middle_man, sponsor_notes, Cases');
-$xcrud-> subselect('Cases',"SELECT COUNT(student_id) FROM {$table_student} WHERE sponsor_id = {sponsor_id}");
-$xcrud->column_callback('Cases', 'sponsor_links');
+$xcrud -> columns('sponsor_name, middle_man, Cases');
+$xcrud -> subselect('Cases',"SELECT COUNT(student_id) FROM {$table_student} WHERE sponsor_id = {sponsor_id}");
+$xcrud -> column_callback('Cases', 'sponsor_links');
+$xcrud -> label(array(
+    'sponsor_name'  =>  'Company Name',
+    'middle_man'    =>  'Middle Man',
+    'sponsor_notes' =>  'Notes'
+));
 
 function sponsor_links($value, $fieldname, $primary_key, $row, $xcrud){
 
