@@ -1,8 +1,9 @@
 <?php
     include('config.php');
+
     $xcrud->table($table_student);
     $xcrud->table_name('澳途留学管理系统');
-    $xcrud->columns('student_name, student_eng, sponsor_id, agency_id, student_phone, student_visa, student_process, student_steps');
+    $xcrud->columns('student_name, middle_man, sponsor_id, agency_id, student_phone, student_visa, student_process, student_steps');
     $xcrud->relation('student_process', $table_process, 'process_id', 'process_name');
     $xcrud->subselect('student_steps',"{student_process}");
     $xcrud->relation('sponsor_id', $table_sponsor, 'sponsor_id', 'sponsor_name');
@@ -13,6 +14,7 @@
     $xcrud->pass_var('process_date', date('Y-m-d'), 'edit');
     $xcrud->disabled_on_edit('process_date');
     $xcrud->where("$table_student.student_process != 18 ");
+
     $xcrud->label(array(
         'student_steps'=>'Process',
         'student_name'  =>  'Name',

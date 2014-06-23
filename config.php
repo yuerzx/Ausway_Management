@@ -22,8 +22,16 @@ global $table_agency;
 global $table_sponsor;
 global $table_process;
 
+
+
 $xcrud = Xcrud::get_instance();
 $xcrud->unset_csv();
+#hide edit button for Howard and Patrick
+global $current_user;
+get_currentuserinfo();
+if(!($current_user->user_login == "yuerzx" or $current_user->user_login == "yuer" or $current_user->user_login == "ausway")) {
+	$xcrud->unset_remove();
+}
 ?>
 
 

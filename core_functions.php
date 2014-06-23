@@ -42,6 +42,11 @@ function system_nav($name=null){
             <li class ="<?php if($name == 'home') echo 'active'; ?>"><a href="index.php">Student List</a></li>
             <li class ="<?php if($name == 'agency') echo 'active'; ?>" ><a href="agency_list.php">Agency List</a></li>
             <li class ="<?php if($name == 'sponsor') echo 'active'; ?>" ><a href="sponsor_list.php">Sponsor List</a></li>
+            <li><?php
+                if ( is_user_logged_in() ) { // Display WordPress login form:
+                    wp_loginout( home_url() ); // Display "Log Out" link.
+                }
+                ?></li>
         </ul>
     </div>
 <?php

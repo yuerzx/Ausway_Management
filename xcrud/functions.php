@@ -11,7 +11,7 @@ function process_bar($process){
     </div>';
 }
 
-function sponsor_links($value, $fieldname, $primary_key, $row, $xcrud){
+function sponsor_lists($value, $fieldname, $primary_key, $row, $xcrud){
 
     return '<a href="cases_list.php?sponsor_id='.$primary_key.'">'.$value.'</a>';
 }

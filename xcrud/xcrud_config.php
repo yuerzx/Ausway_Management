@@ -60,7 +60,7 @@ class Xcrud_config
     public static $start_minimized = false; // Start all xCRUD instances minimized.
     public static $remove_confirm = true; // Show confirmation dialog on remove action.
     public static $column_cut = 50; // Sets the maximum number of characters in the column.
-    public static $limit = 5; // default limit of rows per page
+    public static $limit = 20; // default limit of rows per page
     public static $limit_list = array('20', '50', '100', 'all'); // default limits list
     public static $clickable_list_links = true; // make all links, emails clikable in list view
     public static $clickable_filenames = true; // makes filenames clikable in list view

@@ -24,6 +24,7 @@ function add_contact_sql(){
         student_visa varchar(8),
         process_date DATE,
         student_process int(2),
+        box_embed text,
         student_notes text,
         PRIMARY KEY(student_id),
         INDEX (sponsor_id,agency_id)
@@ -55,7 +56,9 @@ function add_contact_sql(){
       CREATE TABLE $table_sponsor(
         sponsor_id int(10) NOT NULL AUTO_INCREMENT,
         sponsor_name varchar(255) NOT NULL UNIQUE,
-        middle_man varchar(254),
+        middle_man varchar(30),
+        sponsor_links varchar(250),
+        box_embed text,
         sponsor_notes text,
         PRIMARY KEY(sponsor_id)
       )CHARSET=utf8;

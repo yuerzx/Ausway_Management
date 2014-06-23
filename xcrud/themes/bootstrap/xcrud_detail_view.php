@@ -12,3 +12,23 @@
 <div class="xcrud-nav">
     <?php echo $this->render_benchmark(); ?>
 </div>
+<div class="row">
+<div class="col-md-6" style="padding-top: 10px;">
+	<?php 
+	$row = $this->result_row;
+	foreach ($row as $key => $value) {
+		if(preg_match('/box_embed/', $key)){
+
+			echo "<div>".html_entity_decode($value)."</div>";
+		}
+	}
+	?>
+
+</div>
+<div class="col-md-6">
+	<pre>box.net
+	User: Ausway@1230.me
+	Pass: ausway123</pre>
+</div>
+	
+</div>
